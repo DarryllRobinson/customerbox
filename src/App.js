@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Home from './components/Home';
 import Copyright from './components/Copyright';
 import Dashboard from './components/Dashboard';
+import ControlledSwitch from './components/ControlledSwitch';
 
 // User pages
 import SignIn from './features/users/SignIn';
@@ -13,7 +14,7 @@ import SignUp from './features/users/SignUp';
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
   },
 });
 
@@ -24,10 +25,11 @@ function App() {
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          border: '1px solid black',
+          //border: '1px solid black',
           display: 'flex',
           flexDirection: 'column',
           m: '-8px',
+          p: '8px',
           minHeight: '100vh',
           backgroundColor: (theme) =>
             theme.palette.mode === 'light'
@@ -35,6 +37,7 @@ function App() {
               : theme.palette.grey[800],
         }}
       >
+        <ControlledSwitch />
         <Routes>
           <Route
             path="/:url*(/+)"
