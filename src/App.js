@@ -1,28 +1,35 @@
 import React from 'react';
 import { Navigate, Route, Router, Routes, useLocation } from 'react-router-dom';
-import { Box, Container } from '@mui/material';
+import { Box, Container, CssBaseline, Switch } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Home from './components/Home';
 import Copyright from './components/Copyright';
 import Dashboard from './components/Dashboard';
-import ControlledSwitch from './components/ControlledSwitch';
 
 // User pages
 import SignIn from './features/users/SignIn';
 import SignUp from './features/users/SignUp';
 
-const theme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
+// Define theme settings
+const light = { palette: { mode: 'light' } };
+const dark = { palette: { mode: 'dark' } };
 
 function App() {
   let { pathname } = useLocation();
 
+  // Theme state set up
+  // Light theme is default theme
+  const [isDarkTheme, setIsDarkTheme] = React.useState(false);
+
+  // Toggling theme
+  const changeTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}>
+      <CssBaseline />
       <Box
         sx={{
           //border: '1px solid black',
@@ -37,7 +44,7 @@ function App() {
               : theme.palette.grey[800],
         }}
       >
-        <ControlledSwitch />
+        <Switch checked={isDarkTheme} onChange={changeTheme} />
         <Routes>
           <Route
             path="/:url*(/+)"
