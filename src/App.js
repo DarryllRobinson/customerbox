@@ -22,6 +22,22 @@ function App() {
   // Light theme is default theme
   const [isDarkTheme, setIsDarkTheme] = React.useState(false);
 
+  // Getting device scheme settings to use as default for App
+  React.useEffect(() => {
+    // Update the default theme with device setting
+    setIsDarkTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }, []);
+
+  React.useEffect(() => {
+    // Check to see if it changes at any point
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', (event) => {
+        const colorScheme = event.matches ? 'dark' : 'light';
+        setIsDarkTheme(!isDarkTheme);
+      });
+  }, [isDarkTheme]);
+
   // Toggling theme
   const changeTheme = () => {
     setIsDarkTheme(!isDarkTheme);
