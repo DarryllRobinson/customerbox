@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Home from './components/Home';
 import Copyright from './components/Copyright';
 import Dashboard from './components/Dashboard';
+import NavBar from './features/nav/NavBar';
 
 // User pages
 import SignIn from './features/users/SignIn';
@@ -33,8 +34,9 @@ function App() {
     window
       .matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', (event) => {
-        const colorScheme = event.matches ? 'dark' : 'light';
-        setIsDarkTheme(!isDarkTheme);
+        setIsDarkTheme(
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+        );
       });
   }, [isDarkTheme]);
 
@@ -109,7 +111,9 @@ function App() {
               : theme.palette.grey[800],
         }}
       >
-        <MaterialUISwitch checked={isDarkTheme} onChange={changeTheme} />
+        <Box sx={{ alignItems: 'center', border: '1px solid black' }}>
+          <NavBar checked={isDarkTheme} onChange={changeTheme} />
+        </Box>
         <Routes>
           <Route
             path="/:url*(/+)"

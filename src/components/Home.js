@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -11,7 +12,6 @@ import {
   Typography,
 } from '@mui/material';
 
-import NavBar from './NavBar';
 import banner from '../assets/images/CustomerBox banner.png';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -25,16 +25,11 @@ const Item = styled(Paper)(({ theme }) => ({
 function Home() {
   return (
     <>
-      <NavBar />
-      Customer Box
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        <Grid item xs={12}>
-          <Item>xs=12</Item>
-        </Grid>
         <Grid item xs={12}>
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
@@ -57,21 +52,6 @@ function Home() {
               <Button size="small">Learn More</Button>
             </CardActions>
           </Card>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>xs=6</Item>
-        </Grid>
-        <Grid item xs={6}>
-          <Item>xs=6</Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item>xs=4</Item>
-        </Grid>
-        <Grid item xs={4}>
-          <Item>xs=4</Item>
         </Grid>
       </Grid>
     </>
