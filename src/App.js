@@ -1,13 +1,13 @@
 import React from 'react';
-import { Navigate, Route, Router, Routes, useLocation } from 'react-router-dom';
-import { Box, Container, CssBaseline, styled, Switch } from '@mui/material';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { Box, Container, CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Home from './components/Home';
 import Copyright from './components/Copyright';
 import Dashboard from './components/Dashboard';
 import Pricing from './components/Pricing';
-import NavBar from './features/nav/ResponsiveAppBar';
+import NavBar from './features/nav/NavBar';
 
 // User pages
 import SignIn from './features/users/SignIn';
