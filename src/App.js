@@ -6,7 +6,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Home from './components/Home';
 import Copyright from './components/Copyright';
 import Dashboard from './components/Dashboard';
-import NavBar from './features/nav/NavBar';
+import Pricing from './components/Pricing';
+import NavBar from './features/nav/ResponsiveAppBar';
 
 // User pages
 import SignIn from './features/users/SignIn';
@@ -71,6 +72,7 @@ function App() {
             element={<Navigate to={pathname.slice(0, -1)} replace />}
           />
           <Route path="/" element={<Home />} />
+          <Route path="pricing" element={<Pricing />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="signin" element={<SignIn />} />
           <Route path="signup" element={<SignUp />} />

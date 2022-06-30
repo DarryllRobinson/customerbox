@@ -2,17 +2,24 @@ import * as React from 'react';
 import {
   Avatar,
   Box,
+  Button,
   Divider,
   IconButton,
+  Link,
   ListItemIcon,
   Menu,
   MenuItem,
+  Toolbar,
   Tooltip,
   Typography,
 } from '@mui/material';
 import { Logout, Settings } from '@mui/icons-material';
 
-export default function HomeNavBar() {
+import MaterialUISwitch from '../../components/MaterialUISwitch';
+
+export default function HomeNavBar(props) {
+  const { checked, onChange } = props;
+
   const [anchorEl, setAnchorEl] = React.useState(null); //(React.useState < null) | (HTMLElement > null);
 
   const open = Boolean(anchorEl);
@@ -25,83 +32,56 @@ export default function HomeNavBar() {
     setAnchorEl(null);
   };
 
+  //const NavLink = styled(Link)(({ theme }) => ({}));
+
   return (
-    <React.Fragment>
-      <Box
-        display="flex"
-        justifyContent="flex-end"
-        sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}
+    <Toolbar sx={{ flexWrap: 'wrap' }}>
+      <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
+        Company name
+      </Typography>
+      <MaterialUISwitch checked={checked} onChange={onChange} />
+      <nav>
+        <Link
+          variant="button"
+          color="text.primary"
+          href="#"
+          sx={{ my: 1, mx: 1.5 }}
+        >
+          Products
+        </Link>
+        <Link
+          variant="button"
+          color="text.primary"
+          href="#"
+          sx={{ my: 1, mx: 1.5 }}
+        >
+          Solutions
+        </Link>
+        <Link
+          variant="button"
+          color="text.primary"
+          href="/pricing"
+          sx={{ my: 1, mx: 1.5 }}
+        >
+          Pricing
+        </Link>
+        <Link
+          variant="button"
+          color="text.primary"
+          href="/signin"
+          sx={{ my: 1, mx: 1.5 }}
+        >
+          Sign In
+        </Link>
+      </nav>
+      <Button
+        color="primary"
+        href="/signup"
+        variant="contained"
+        sx={{ my: 1, mx: 1.5 }}
       >
-        <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-        <Typography sx={{ minWidth: 100 }}>Profile</Typography>
-        <Tooltip title="Account settings">
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            sx={{ ml: 2 }}
-            aria-controls={open ? 'account-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-          >
-            <Avatar sx={{ width: 32, height: 32 }}>DR</Avatar>
-          </IconButton>
-        </Tooltip>
-      </Box>
-      <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
-            '& .MuiAvatar-root': {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            '&:before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
-          },
-        }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-      >
-        <MenuItem>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem>
-          <Avatar /> My account
-        </MenuItem>
-        <Divider />
-        <MenuItem>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
-      </Menu>
-    </React.Fragment>
+        Sign Up
+      </Button>
+    </Toolbar>
   );
 }
