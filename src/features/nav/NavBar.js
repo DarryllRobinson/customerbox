@@ -4,6 +4,8 @@ import {
   Avatar,
   Box,
   Button,
+  Card,
+  CardMedia,
   Container,
   IconButton,
   Menu,
@@ -13,16 +15,31 @@ import {
   Typography,
   Switch,
 } from '@mui/material';
-import AdbIcon from '@mui/icons-material/Adb';
+import { Link as RouterLink } from 'react-router-dom';
 
 import HomeNavBar from './HomeNavBar';
-import UserNavBar from './UserNavBar';
+import LoggedInNavBar from './LoggedInNavBar';
+import logo from '../../assets/images/CustomerBox logo.png';
 import avatar from '../../assets/images/Darryll passport.jpg';
 import MaterialUISwitch from '../../components/MaterialUISwitch';
 
-const pages = ['Products', 'Solutions', 'Pricing'];
-const userPages = ['Dashboard', 'Reports'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = [
+  { title: 'Products', link: '#' },
+  { title: 'Solutions', link: '#' },
+  { title: 'Pricing', link: '/pricing' },
+];
+
+const userPages = [
+  { title: 'Dashboard', link: '#' },
+  { title: 'Reports', link: '#' },
+];
+
+const settings = [
+  { title: 'Profile', link: '#' },
+  { title: 'Account', link: '#' },
+  { title: 'Dashboard', link: '#' },
+  { title: 'Logout', link: '#' },
+];
 
 export default function NavBar(props) {
   const { checked, onChange } = props;
@@ -50,7 +67,7 @@ export default function NavBar(props) {
     switch (isLoggedIn) {
       case true:
         return (
-          <UserNavBar
+          <LoggedInNavBar
             checked={checked}
             handleOpenNavMenu={handleOpenNavMenu}
             anchorElNav={anchorElNav}
@@ -80,11 +97,13 @@ export default function NavBar(props) {
           <>
             {userPages.map((userPage) => (
               <Button
-                key={userPage}
-                onClick={handleCloseNavMenu}
+                key={userPage.title}
+                component={RouterLink}
+                //onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                to={userPage.link}
               >
-                {userPage}
+                {userPage.title}
               </Button>
             ))}
           </>
@@ -94,11 +113,13 @@ export default function NavBar(props) {
           <>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.title}
+                component={RouterLink}
+                //onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                to={page.link}
               >
-                {page}
+                {page.title}
               </Button>
             ))}
           </>
@@ -113,12 +134,20 @@ export default function NavBar(props) {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Larger resolution */}
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Card sx={{ maxWidth: 345, ml: -4, mr: 2 }}>
+            <CardMedia
+              sx={{ display: { xs: 'none', md: 'flex' } }}
+              component="img"
+              height="40"
+              image={logo}
+              alt="logo"
+            />
+          </Card>
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={RouterLink}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -129,47 +158,47 @@ export default function NavBar(props) {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            CustomerBox
           </Typography>
-
           {/* Box for menu items - smaller resolution */}
           {menuToDisplay()}
-
           {/* Smaller resolution */}
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href=""
+            component={RouterLink}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
+              fontSize: 18,
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            LOGO
+            CustomerBox
           </Typography>
-
           {/* Box for menu items - larger resolution */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {largerMenuItemsToDisplay()}
           </Box>
-
           {/* Box for user items */}
+          <Switch
+            onChange={() => {
+              setIsLoggedIn(!isLoggedIn);
+            }}
+            sx={{ display: { xs: 'none', md: 'flex' } }}
+          />
+          <MaterialUISwitch
+            checked={checked}
+            onChange={onChange}
+            sx={{ display: { xs: 'none', md: 'flex' } }}
+          />
           <Box sx={{ flexGrow: 0 }}>
-            User logger
-            <Switch
-              onChange={() => {
-                setIsLoggedIn(!isLoggedIn);
-              }}
-            />
-            <MaterialUISwitch checked={checked} onChange={onChange} />
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="user avatar" src={avatar} />
@@ -192,10 +221,21 @@ export default function NavBar(props) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting.title}</Typography>
                 </MenuItem>
               ))}
+              <Switch
+                onChange={() => {
+                  setIsLoggedIn(!isLoggedIn);
+                }}
+                sx={{ display: { xs: 'flex', md: 'none' } }}
+              />
+              <MaterialUISwitch
+                checked={checked}
+                onChange={onChange}
+                sx={{ display: { xs: 'flex', md: 'none' } }}
+              />
             </Menu>
           </Box>
         </Toolbar>

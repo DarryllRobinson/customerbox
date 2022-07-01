@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Box, IconButton, Menu, MenuItem, Typography } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function HomeNavBar(props) {
   const { anchorElNav, handleCloseNavMenu, handleOpenNavMenu, pages } = props;
@@ -36,8 +37,8 @@ export default function HomeNavBar(props) {
         }}
       >
         {pages.map((page) => (
-          <MenuItem key={page} onClick={handleCloseNavMenu}>
-            <Typography textAlign="center">{page}</Typography>
+          <MenuItem key={page.title} component={RouterLink} to={page.link}>
+            <Typography textAlign="center">{page.title}</Typography>
           </MenuItem>
         ))}
       </Menu>

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Alert,
   Avatar,
   Box,
   Button,
@@ -8,19 +7,16 @@ import {
   Container,
   FormControlLabel,
   Grid,
-  Link,
-  Snackbar,
   TextField,
   Typography,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Link as RouterLink } from 'react-router-dom';
 
 import { userService } from './user.service';
 import { withSnackbar } from '../../components/SnackbarHOC';
 
-export default withSnackbar(SignIn);
-
-function SignIn() {
+export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -81,14 +77,18 @@ function SignIn() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
+              <RouterLink to="#">
+                <Typography color="primary" variant="body2">
+                  Forgot password?
+                </Typography>
+              </RouterLink>
             </Grid>
             <Grid item>
-              <Link href="signup" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+              <RouterLink to="/signup">
+                <Typography color="primary" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Typography>
+              </RouterLink>
             </Grid>
           </Grid>
         </Box>

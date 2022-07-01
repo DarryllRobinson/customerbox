@@ -2,15 +2,13 @@ import * as React from 'react';
 import { Box, IconButton, Menu, MenuItem, Typography } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
 
-export default function UserNavBar(props) {
+export default function LoggedInNavBar(props) {
   const {
     anchorElNav,
     handleCloseNavMenu,
     handleOpenNavMenu,
     userPages,
   } = props;
-
-  //const NavLink = styled(Link)(({ theme }) => ({}));
 
   return (
     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -43,8 +41,8 @@ export default function UserNavBar(props) {
         }}
       >
         {userPages.map((userPage) => (
-          <MenuItem key={userPage} onClick={handleCloseNavMenu}>
-            <Typography textAlign="center">{userPage}</Typography>
+          <MenuItem key={userPage.title} onClick={handleCloseNavMenu}>
+            <Typography textAlign="center">{userPage.title}</Typography>
           </MenuItem>
         ))}
       </Menu>
