@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { Box, IconButton, Menu, MenuItem, Typography } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
-import { Link as RouterLink } from 'react-router-dom';
 
-export default function HomeNavBar(props) {
-  const { anchorElNav, handleCloseNavMenu, handleOpenNavMenu, pages } = props;
+export default function LoggedInNavBar(props) {
+  const {
+    anchorElNav,
+    handleCloseNavMenu,
+    handleOpenNavMenu,
+    userPages,
+  } = props;
 
   return (
     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -36,9 +40,9 @@ export default function HomeNavBar(props) {
           display: { xs: 'block', md: 'none' },
         }}
       >
-        {pages.map((page) => (
-          <MenuItem key={page.title} component={RouterLink} to={page.link}>
-            <Typography textAlign="center">{page.title}</Typography>
+        {userPages.map((userPage) => (
+          <MenuItem key={userPage.title} onClick={handleCloseNavMenu}>
+            <Typography textAlign="center">{userPage.title}</Typography>
           </MenuItem>
         ))}
       </Menu>

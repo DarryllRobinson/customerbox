@@ -1,70 +1,245 @@
-import { Box, styled, Switch, useTheme } from '@mui/material';
+import React from 'react';
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardMedia,
+  Container,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Tooltip,
+  Typography,
+  Switch,
+} from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
-import CommonNavBar from './CommonNavBar';
 import HomeNavBar from './HomeNavBar';
+import LoggedInNavBar from './LoggedInNavBar';
+import logo from '../../assets/images/CustomerBox logo.png';
+import avatar from '../../assets/images/Darryll passport.jpg';
+import MaterialUISwitch from '../../components/MaterialUISwitch';
+
+const pages = [
+  { title: 'Products', link: '#' },
+  { title: 'Solutions', link: '#' },
+  { title: 'Pricing', link: '/pricing' },
+];
+
+const userPages = [
+  { title: 'Dashboard', link: '#' },
+  { title: 'Reports', link: '#' },
+];
+
+const settings = [
+  { title: 'Profile', link: '#' },
+  { title: 'Account', link: '#' },
+  { title: 'Dashboard', link: '#' },
+  { title: 'Logout', link: '#' },
+];
 
 export default function NavBar(props) {
   const { checked, onChange } = props;
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
-  const theme = useTheme();
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  // Super fancy switch with icons from the MUI site
-  const MaterialUISwitch = styled(Switch)(({ theme }) => ({
-    width: 62,
-    height: 34,
-    padding: 7,
-    '& .MuiSwitch-switchBase': {
-      margin: 1,
-      padding: 0,
-      transform: 'translateX(6px)',
-      '&.Mui-checked': {
-        color: '#fff',
-        transform: 'translateX(22px)',
-        '& .MuiSwitch-thumb:before': {
-          backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
-            '#fff'
-          )}" d="M4.2 2.5l-.7 1.8-1.8.7 1.8.7.7 1.8.6-1.8L6.7 5l-1.9-.7-.6-1.8zm15 8.3a6.7 6.7 0 11-6.6-6.6 5.8 5.8 0 006.6 6.6z"/></svg>')`,
-        },
-        '& + .MuiSwitch-track': {
-          opacity: 1,
-          backgroundColor:
-            theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
-        },
-      },
-    },
-    '& .MuiSwitch-thumb': {
-      backgroundColor: theme.palette.mode === 'dark' ? '#003892' : '#001e3c',
-      width: 32,
-      height: 32,
-      '&:before': {
-        content: "''",
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        left: 0,
-        top: 0,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
-          '#fff'
-        )}" d="M9.305 1.667V3.75h1.389V1.667h-1.39zm-4.707 1.95l-.982.982L5.09 6.072l.982-.982-1.473-1.473zm10.802 0L13.927 5.09l.982.982 1.473-1.473-.982-.982zM10 5.139a4.872 4.872 0 00-4.862 4.86A4.872 4.872 0 0010 14.862 4.872 4.872 0 0014.86 10 4.872 4.872 0 0010 5.139zm0 1.389A3.462 3.462 0 0113.471 10a3.462 3.462 0 01-3.473 3.472A3.462 3.462 0 016.527 10 3.462 3.462 0 0110 6.528zM1.665 9.305v1.39h2.083v-1.39H1.666zm14.583 0v1.39h2.084v-1.39h-2.084zM5.09 13.928L3.616 15.4l.982.982 1.473-1.473-.982-.982zm9.82 0l-.982.982 1.473 1.473.982-.982-1.473-1.473zM9.305 16.25v2.083h1.389V16.25h-1.39z"/></svg>')`,
-      },
-    },
-    '& .MuiSwitch-track': {
-      opacity: 1,
-      backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
-      borderRadius: 20 / 2,
-    },
-  }));
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  const menuToDisplay = () => {
+    switch (isLoggedIn) {
+      case true:
+        return (
+          <LoggedInNavBar
+            checked={checked}
+            handleOpenNavMenu={handleOpenNavMenu}
+            anchorElNav={anchorElNav}
+            handleCloseNavMenu={handleCloseNavMenu}
+            userPages={userPages}
+          />
+        );
+      case false:
+        return (
+          <HomeNavBar
+            checked={checked}
+            handleOpenNavMenu={handleOpenNavMenu}
+            anchorElNav={anchorElNav}
+            handleCloseNavMenu={handleCloseNavMenu}
+            pages={pages}
+          />
+        );
+      default:
+        return <div>Problem with NavBar selection</div>;
+    }
+  };
+
+  const largerMenuItemsToDisplay = () => {
+    switch (isLoggedIn) {
+      case true:
+        return (
+          <>
+            {userPages.map((userPage) => (
+              <Button
+                key={userPage.title}
+                component={RouterLink}
+                //onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+                to={userPage.link}
+              >
+                {userPage.title}
+              </Button>
+            ))}
+          </>
+        );
+      case false:
+        return (
+          <>
+            {pages.map((page) => (
+              <Button
+                key={page.title}
+                component={RouterLink}
+                //onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+                to={page.link}
+              >
+                {page.title}
+              </Button>
+            ))}
+          </>
+        );
+      default:
+        return <div>Problem with NavBar selection</div>;
+    }
+  };
 
   return (
-    <Box
-      display="flex"
-      justifyContent="flex-end"
-      sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}
-    >
-      <MaterialUISwitch checked={checked} onChange={onChange} />
-      <HomeNavBar />
-    </Box>
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          {/* Larger resolution */}
+          <Card sx={{ maxWidth: 345, ml: -4, mr: 2 }}>
+            <CardMedia
+              sx={{ display: { xs: 'none', md: 'flex' } }}
+              component="img"
+              height="40"
+              image={logo}
+              alt="logo"
+            />
+          </Card>
+          <Typography
+            variant="h6"
+            noWrap
+            component={RouterLink}
+            to="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            CustomerBox
+          </Typography>
+          {/* Box for menu items - smaller resolution */}
+          {menuToDisplay()}
+          {/* Smaller resolution */}
+          <Typography
+            variant="h5"
+            noWrap
+            component={RouterLink}
+            to="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontSize: 18,
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            CustomerBox
+          </Typography>
+          {/* Box for menu items - larger resolution */}
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {largerMenuItemsToDisplay()}
+          </Box>
+          {/* Box for user items */}
+          <Switch
+            onChange={() => {
+              setIsLoggedIn(!isLoggedIn);
+            }}
+            sx={{ display: { xs: 'none', md: 'flex' } }}
+          />
+          <MaterialUISwitch
+            checked={checked}
+            onChange={onChange}
+            sx={{ display: { xs: 'none', md: 'flex' } }}
+          />
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="user avatar" src={avatar} />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting.title}</Typography>
+                </MenuItem>
+              ))}
+              <Switch
+                onChange={() => {
+                  setIsLoggedIn(!isLoggedIn);
+                }}
+                sx={{ display: { xs: 'flex', md: 'none' } }}
+              />
+              <MaterialUISwitch
+                checked={checked}
+                onChange={onChange}
+                sx={{ display: { xs: 'flex', md: 'none' } }}
+              />
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
