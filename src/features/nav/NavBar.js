@@ -8,6 +8,7 @@ import {
   CardMedia,
   Container,
   IconButton,
+  Link,
   Menu,
   MenuItem,
   Toolbar,
@@ -30,14 +31,14 @@ const pages = [
 ];
 
 const userPages = [
-  { title: 'Dashboard', link: '#' },
+  { title: 'Dashboard', link: '/dashboard' },
   { title: 'Reports', link: '#' },
 ];
 
 const settings = [
   { title: 'Profile', link: '#' },
   { title: 'Account', link: '#' },
-  { title: 'Dashboard', link: '#' },
+  { title: 'Dashboard', link: '/dashboard' },
   { title: 'Logout', link: '#' },
 ];
 
@@ -221,7 +222,12 @@ export default function NavBar(props) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
+                <MenuItem
+                  key={setting.title}
+                  component={Link}
+                  onClick={handleCloseUserMenu}
+                  href={setting.link}
+                >
                   <Typography textAlign="center">{setting.title}</Typography>
                 </MenuItem>
               ))}
