@@ -29,8 +29,44 @@ function Home() {
         container
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
+        sx={{ py: 1 }}
       >
-        <Grid item xs={12}>
+        <Grid
+          item
+          xs={12}
+          alignItems="center"
+          display="flex"
+          justifyContent="center"
+        >
+          <Card width={{ md: 400 }}>
+            <CardMedia
+              component="img"
+              height="160"
+              image={banner}
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Values
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Unique Selling Proposition
+                https://www.crazyegg.com/blog/homepage-design/
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid
+          item
+          alignItems="center"
+          display="flex"
+          justifyContent="space-evenly"
+          xs={4}
+        >
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               component="img"
@@ -40,11 +76,66 @@ function Home() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                Lizard
+                First Question
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
+                What do we absolutely need on our homepage?
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid
+          item
+          alignItems="center"
+          display="flex"
+          justifyContent="space-evenly"
+          xs={4}
+        >
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              component="img"
+              height="140"
+              image={banner}
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Second Question
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Who is our target audience and what will they expect?
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid
+          item
+          alignItems="center"
+          display="flex"
+          justifyContent="space-evenly"
+          xs={4}
+        >
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              component="img"
+              height="140"
+              image={banner}
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Third Question
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Which elements take priority?
               </Typography>
             </CardContent>
             <CardActions>
