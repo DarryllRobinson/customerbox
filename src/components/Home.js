@@ -47,10 +47,11 @@ function Home() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                Something awesome that we do
+                Values
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Amazing stuff with testimonies and whatever else should go here
+                Unique Selling Proposition
+                https://www.crazyegg.com/blog/homepage-design/
               </Typography>
             </CardContent>
             <CardActions>
@@ -75,11 +76,10 @@ function Home() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                Lizard
+                First Question
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
+                What do we absolutely need on our homepage?
               </Typography>
             </CardContent>
             <CardActions>
@@ -104,11 +104,10 @@ function Home() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                Lizard
+                Second Question
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
+                Who is our target audience and what will they expect?
               </Typography>
             </CardContent>
             <CardActions>
@@ -133,11 +132,10 @@ function Home() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                Lizard
+                Third Question
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
+                Which elements take priority?
               </Typography>
             </CardContent>
             <CardActions>
