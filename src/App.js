@@ -54,7 +54,6 @@ function App() {
           //border: '1px solid black',
           display: 'flex',
           flexDirection: 'column',
-          m: '-8px',
           p: '8px',
           minHeight: '100vh',
           backgroundColor: (theme) =>
@@ -63,9 +62,7 @@ function App() {
               : theme.palette.grey[800],
         }}
       >
-        <Box sx={{ alignItems: 'center', border: '1px solid black' }}>
-          <NavBar checked={isDarkTheme} onChange={changeTheme} />
-        </Box>
+        <NavBar checked={isDarkTheme} onChange={changeTheme} />
         <Routes>
           <Route
             path="/:url*(/+)"

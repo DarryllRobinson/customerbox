@@ -30,7 +30,7 @@ import Chart from './Examples/Chart';
 import Deposits from './Examples/Deposits';
 import Orders from './Examples/Orders';
 
-const drawerWidth = 240;
+const drawerWidth = 130;
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -123,6 +123,7 @@ function DashboardContent() {
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
+          {console.log('making Drawer', Drawer)}
           <Toolbar
             sx={{
               display: 'flex',
