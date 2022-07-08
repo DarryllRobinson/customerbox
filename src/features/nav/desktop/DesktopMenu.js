@@ -11,7 +11,7 @@ export default function DesktopMenu(props) {
   //console.log({ props });
 
   return (
-    <Box sx={{ flexGrow: 1, display: { sm: 'flex' } }}>
+    <Box sx={{ flexGrow: 1, display: 'flex' }}>
       <Logo />
       <MenuChoices />
       <Switch
