@@ -10,7 +10,7 @@ const pages = [
 
 export default function MenuChoices() {
   return (
-    <Box sx={{ flexGrow: 1, display: { sm: 'flex' } }}>
+    <Box sx={{ display: { sm: 'flex' }, flexGrow: 1 }}>
       {pages.map((page) => (
         <Button
           key={page.title}

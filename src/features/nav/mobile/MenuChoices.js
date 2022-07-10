@@ -21,7 +21,8 @@ const pages = [
 
 export default function MenuChoices(props) {
   const { checked, isLoggedIn, onChange, setIsLoggedIn } = props;
-  console.log({ props });
+  //console.log({ props });
+
   // State hooks
   const [anchorElNav, setAnchorElNav] = useState(null);
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardMedia, Link, Typography } from '@mui/material';
 
-import logo from '../../assets/images/CustomerBox logo.png';
+import logo from '../../../assets/images/CustomerBox logo.png';
 
 export default function Logo() {
   return (

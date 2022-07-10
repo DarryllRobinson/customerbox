@@ -1,6 +1,6 @@
 import { Box, Switch } from '@mui/material';
 
-import Logo from '../Logo';
+import Logo from './Logo';
 import MenuChoices from './MenuChoices';
 import UserMenu from './UserMenu';
 import SignInButtons from './SignInButtons';
@@ -11,7 +11,7 @@ export default function DesktopMenu(props) {
   //console.log({ props });
 
   return (
-    <Box sx={{ flexGrow: 1, display: 'flex' }}>
+    <Box sx={{ display: 'flex', flexGrow: 1 }}>
       <Logo />
       <MenuChoices />
       <Switch
