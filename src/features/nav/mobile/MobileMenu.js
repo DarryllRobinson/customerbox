@@ -20,7 +20,14 @@ export default function MobileMenu(props) {
         <Logo />
       </Box>
       <Box sx={{ justifyContent: 'flex-end', my: 1 }}>
-        {isLoggedIn && <UserMenu props />}
+        {isLoggedIn && (
+          <UserMenu
+            checked={checked}
+            isLoggedIn={isLoggedIn}
+            onChange={onChange}
+            setIsLoggedIn={setIsLoggedIn}
+          />
+        )}
         {!isLoggedIn && <SignInButtons />}
       </Box>
     </>

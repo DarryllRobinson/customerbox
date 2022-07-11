@@ -70,6 +70,7 @@ export default function UserMenu(props) {
             </MenuItem>
           ))}
           <Switch
+            checked={isLoggedIn}
             onChange={() => {
               setIsLoggedIn(!isLoggedIn);
             }}

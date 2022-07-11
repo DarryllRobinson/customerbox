@@ -15,6 +15,7 @@ export default function DesktopMenu(props) {
       <Logo />
       <MenuChoices />
       <Switch
+        checked={isLoggedIn}
         onChange={() => {
           setIsLoggedIn(!isLoggedIn);
         }}

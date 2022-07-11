@@ -18,7 +18,7 @@ export default function NavBar(props) {
   // State hooks
   const theme = useTheme();
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
   //const laptop = useMediaQuery(theme.breakpoints.between('sm', 'lg'));
@@ -60,7 +60,7 @@ export default function NavBar(props) {
       );
     }
 
-    return 'Default';
+    return null;
   }
 
   return (

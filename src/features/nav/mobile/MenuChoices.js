@@ -73,6 +73,7 @@ export default function MenuChoices(props) {
         ))}
         <MenuItem key="user-switch">
           <Switch
+            checked={isLoggedIn}
             onChange={() => {
               setIsLoggedIn(!isLoggedIn);
             }}
