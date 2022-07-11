@@ -27,6 +27,7 @@ export default function NavBar(props) {
 
   function menuToDisplay() {
     const { pathname } = history.location;
+    //console.log({ theme });
 
     // Home screen
     if (pathname === '/' || pathname === 'signin' || pathname === '/signup') {
@@ -73,7 +74,14 @@ export default function NavBar(props) {
       );
     }
 
-    return <DashboardMenu />;
+    return (
+      <DashboardMenu
+        checked={checked}
+        onChange={onChange}
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+      />
+    );
   }
 
   return (

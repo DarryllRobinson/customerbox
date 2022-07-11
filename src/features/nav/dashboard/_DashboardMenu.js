@@ -4,7 +4,6 @@ import {
   Badge,
   Box,
   createTheme,
-  CssBaseline,
   Drawer as MuiDrawer,
   Divider,
   IconButton,
@@ -12,14 +11,11 @@ import {
   styled,
   ThemeProvider,
   Toolbar,
-  useTheme,
   Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-
-import UserMenu from './UserMenu';
 
 // Menu items
 import { MainListItems, secondaryListItems } from './ListItems';
@@ -42,13 +38,13 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const drawerWidth = 240;
+const drawerWidth = 130;
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
   '& .MuiDrawer-paper': {
-    //position: 'relative',
+    position: 'relative',
     whiteSpace: 'nowrap',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -70,18 +66,14 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-//const mdTheme = createTheme();
+const mdTheme = createTheme();
 
-export default function DashboardMenu(props) {
-  const { checked, isLoggedIn, onChange, setIsLoggedIn } = props;
-
+export default function DashboardMenu() {
   // State hooks
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
-  const mdTheme = useTheme();
-  //console.log({ mdTheme });
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -112,20 +104,15 @@ export default function DashboardMenu(props) {
           >
             Dashboard
           </Typography>
-          <IconButton color="inherit" sx={{ mr: 2 }}>
+          <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <UserMenu
-            checked={checked}
-            onChange={onChange}
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-          />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
+        {console.log('making Drawer', Drawer)}
         <Toolbar
           sx={{
             display: 'flex',
