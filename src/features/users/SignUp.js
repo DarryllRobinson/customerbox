@@ -7,11 +7,11 @@ import {
   Container,
   FormControlLabel,
   Grid,
+  Link,
   TextField,
   Typography,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Link as RouterLink } from 'react-router-dom';
 
 export default function SignUp() {
   const handleSubmit = (event) => {
@@ -100,11 +100,11 @@ export default function SignUp() {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <RouterLink to="/signin">
+              <Link href="/signin">
                 <Typography color="primary" variant="body2">
                   Already have an account? Sign in
                 </Typography>
-              </RouterLink>
+              </Link>
             </Grid>
           </Grid>
         </Box>

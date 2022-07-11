@@ -29,7 +29,7 @@ function Home() {
         container
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
-        sx={{ py: 1 }}
+        sx={{ py: 8 }}
       >
         <Grid
           item
@@ -52,6 +52,90 @@ function Home() {
               <Typography variant="body2" color="text.secondary">
                 Unique Selling Proposition
                 https://www.crazyegg.com/blog/homepage-design/
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid
+          item
+          alignItems="center"
+          display="flex"
+          justifyContent="space-evenly"
+          xs={4}
+        >
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              component="img"
+              height="140"
+              image={banner}
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                First Question
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                What do we absolutely need on our homepage?
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid
+          item
+          alignItems="center"
+          display="flex"
+          justifyContent="space-evenly"
+          xs={4}
+        >
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              component="img"
+              height="140"
+              image={banner}
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Second Question
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Who is our target audience and what will they expect?
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid
+          item
+          alignItems="center"
+          display="flex"
+          justifyContent="space-evenly"
+          xs={4}
+        >
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              component="img"
+              height="140"
+              image={banner}
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Third Question
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Which elements take priority?
               </Typography>
             </CardContent>
             <CardActions>

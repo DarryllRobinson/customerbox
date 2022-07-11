@@ -7,11 +7,11 @@ import {
   Container,
   FormControlLabel,
   Grid,
+  Link,
   TextField,
   Typography,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Link as RouterLink } from 'react-router-dom';
 
 import { userService } from './user.service';
 import { withSnackbar } from '../../components/SnackbarHOC';
@@ -77,18 +77,18 @@ export default function SignIn() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <RouterLink to="#">
+              <Link href="#">
                 <Typography color="primary" variant="body2">
                   Forgot password?
                 </Typography>
-              </RouterLink>
+              </Link>
             </Grid>
             <Grid item>
-              <RouterLink to="/signup">
+              <Link href="/signup">
                 <Typography color="primary" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Typography>
-              </RouterLink>
+              </Link>
             </Grid>
           </Grid>
         </Box>
