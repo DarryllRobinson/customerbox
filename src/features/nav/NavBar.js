@@ -28,9 +28,15 @@ export default function NavBar(props) {
   function menuToDisplay() {
     const { pathname } = history.location;
     //console.log({ theme });
+    //console.log({ pathname });
 
     // Home screen
-    if (pathname === '/' || pathname === 'signin' || pathname === '/signup') {
+    if (
+      pathname === '/' ||
+      pathname === '/signin' ||
+      pathname === '/signup' ||
+      pathname === '/pricing'
+    ) {
       return (
         <>
           {/* Determine menu based on screen size */}
