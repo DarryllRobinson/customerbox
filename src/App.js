@@ -50,6 +50,7 @@ function App() {
     <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}>
       <CssBaseline />
       <Box
+        aria-label="box-outline"
         sx={{
           //border: '1px solid black',
           display: 'flex',
