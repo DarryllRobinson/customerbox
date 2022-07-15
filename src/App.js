@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Box, Container, CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Home from './components/Home';
 import Copyright from './components/Copyright';
-import Dashboard from './components/Dashboard';
+import Dashboard from './features/dashboard/Dashboard';
 import Pricing from './components/Pricing';
 import NavBar from './features/nav/NavBar';
 
@@ -22,15 +22,15 @@ function App() {
 
   // Theme state set up
   // Light theme is default theme
-  const [isDarkTheme, setIsDarkTheme] = React.useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   // Getting device scheme settings to use as default for App
-  React.useEffect(() => {
+  useEffect(() => {
     // Update the default theme with device setting
     setIsDarkTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Check to see if it changes at any point
     window
       .matchMedia('(prefers-color-scheme: dark)')
@@ -50,6 +50,7 @@ function App() {
     <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}>
       <CssBaseline />
       <Box
+        aria-label="box-outline"
         sx={{
           //border: '1px solid black',
           display: 'flex',

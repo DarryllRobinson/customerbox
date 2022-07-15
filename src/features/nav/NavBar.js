@@ -11,6 +11,7 @@ import { history } from '../../helpers';
 import MobileMenu from './mobile/MobileMenu';
 //import LaptopMenu from './LaptopMenu';
 import DesktopMenu from './desktop/DesktopMenu';
+import DashboardMenu from './dashboard/DashboardMenu';
 
 export default function NavBar(props) {
   const { checked, onChange } = props;
@@ -26,19 +27,32 @@ export default function NavBar(props) {
 
   function menuToDisplay() {
     const { pathname } = history.location;
+    //console.log({ theme });
+    //console.log({ pathname });
 
     // Home screen
-    if (pathname === '/' || pathname === 'signin' || pathname === '/signup') {
+    if (
+      pathname === '/' ||
+      pathname === '/signin' ||
+      pathname === '/signup' ||
+      pathname === '/pricing'
+    ) {
       return (
         <>
           {/* Determine menu based on screen size */}
           {mobile && (
-            <MobileMenu
-              checked={checked}
-              onChange={onChange}
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-            />
+            <AppBar position="fixed">
+              <Container maxWidth="xl">
+                <Toolbar disableGutters>
+                  <MobileMenu
+                    checked={checked}
+                    onChange={onChange}
+                    isLoggedIn={isLoggedIn}
+                    setIsLoggedIn={setIsLoggedIn}
+                  />
+                </Toolbar>
+              </Container>
+            </AppBar>
           )}
           {/*laptop && (
             <LaptopMenu
@@ -49,28 +63,37 @@ export default function NavBar(props) {
             />
           )*/}
           {desktop && (
-            <DesktopMenu
-              checked={checked}
-              onChange={onChange}
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-            />
+            <AppBar position="fixed">
+              <Container maxWidth="xl">
+                <Toolbar disableGutters>
+                  <DesktopMenu
+                    checked={checked}
+                    onChange={onChange}
+                    isLoggedIn={isLoggedIn}
+                    setIsLoggedIn={setIsLoggedIn}
+                  />
+                </Toolbar>
+              </Container>
+            </AppBar>
           )}
         </>
       );
     }
 
-    return null;
+    return (
+      <DashboardMenu
+        checked={checked}
+        onChange={onChange}
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+      />
+    );
   }
 
   return (
-    <AppBar position="fixed">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          {/* Determine which menu to display based on pathname */}
-          {menuToDisplay()}
-        </Toolbar>
-      </Container>
-    </AppBar>
+    <>
+      {/* Determine which menu to display based on pathname */}
+      {menuToDisplay()}
+    </>
   );
 }
