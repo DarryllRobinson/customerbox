@@ -63,7 +63,7 @@ export default function NavBar(props) {
             />
           )*/}
           {desktop && (
-            <AppBar position="fixed">
+            <AppBar aria-label="desktop-navbar-appbar" position="fixed">
               <Container maxWidth="xl">
                 <Toolbar disableGutters>
                   <DesktopMenu
