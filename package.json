@@ -22,6 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage",
+    "test:update": "react-scripts test --updateSnapshot",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -41,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "css-mediaquery": "^0.1.2"
   }
 }

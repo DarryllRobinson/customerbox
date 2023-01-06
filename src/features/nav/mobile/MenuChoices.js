@@ -49,6 +49,7 @@ export default function MenuChoices(props) {
         <MenuIcon />
       </IconButton>
       <Menu
+        aria-label="menu choices menu"
         id="menu-appbar"
         anchorEl={anchorElNav}
         anchorOrigin={{
@@ -67,7 +68,12 @@ export default function MenuChoices(props) {
         }}
       >
         {pages.map((page) => (
-          <MenuItem key={page.title} component={Link} href={page.link}>
+          <MenuItem
+            aria-label="menu choices menu item"
+            key={page.title}
+            component={Link}
+            href={page.link}
+          >
             <Typography textAlign="center">{page.title}</Typography>
           </MenuItem>
         ))}
@@ -82,6 +88,7 @@ export default function MenuChoices(props) {
         </MenuItem>
         <MenuItem key="dark-switch">
           <MaterialUISwitch
+            aria-label="dark-switch"
             checked={checked}
             onChange={onChange}
             sx={{ display: 'flex' }}

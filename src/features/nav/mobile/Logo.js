@@ -7,8 +7,14 @@ export default function Logo() {
   return (
     <>
       {/* Larger resolution */}
-      <Card sx={{ maxWidth: 80 }}>
-        <CardMedia component="img" height="50" image={logo} alt="logo" />
+      <Card aria-label="card-logo" sx={{ maxWidth: 80 }}>
+        <CardMedia
+          aria-label="cardmedia-logo"
+          component="img"
+          height="50"
+          image={logo}
+          alt="logo"
+        />
       </Card>
     </>
   );
