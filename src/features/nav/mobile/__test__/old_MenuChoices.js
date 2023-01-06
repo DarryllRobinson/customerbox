@@ -1,6 +1,25 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { useTheme } from '@mui/material/styles';
 
 import MenuChoices from '../MenuChoices';
+
+jest.mock('useTheme', () => {
+  const Styles = jest.requireActual('@material-ui/core/styles');
+
+  const createMuiTheme = jest.requireActual(
+    '@material-ui/core/styles/createMuiTheme'
+  ).default;
+
+  const options = jest.requireActual('../../../src/themes/options').default;
+
+  return {
+    ...Styles,
+    makeStyles: (func) => {
+      const theme = createMuiTheme(options);
+      return Styles.makeStyles(func.bind(null, theme));
+    },
+  };
+});
 
 describe('Testing the MenuChoices component', () => {
   beforeEach(() => {
@@ -21,12 +40,11 @@ describe('Testing the MenuChoices component', () => {
     const switchElement = screen.getByLabelText('dark-switch');
     expect(switchElement).toBeInTheDocument();
   });
-});
 
-describe('Testing the menu items outside of the main test', () => {
-  const rtl = render(<MenuChoices />);
-  expect(
-    rtl.getByTestId('menu choices menu item').querySelectorAll('li.comment')
-      .length
-  ).toEqual(2);
+  test('change theme colour', () => {
+    const theme = useTheme();
+    const switchElement = screen.getByLabelText('dark-switch');
+    fireEvent.click(switchElement);
+    expect(theme.palette.mode).toEqual('dark');
+  });
 });

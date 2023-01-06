@@ -70,6 +70,7 @@ export default function MenuChoices(props) {
         {pages.map((page) => (
           <MenuItem
             aria-label="menu choices menu item"
+            test-id="menu choices menu item"
             key={page.title}
             component={Link}
             href={page.link}

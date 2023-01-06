@@ -1,24 +1,26 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
+import React from 'react';
+import {
+  AppBar,
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Container,
+  CssBaseline,
+  GlobalStyles,
+  Grid,
+  Toolbar,
+  Typography,
+  Link,
+} from '@mui/material';
 import StarIcon from '@mui/icons-material/StarBorder';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import GlobalStyles from '@mui/material/GlobalStyles';
-import Container from '@mui/material/Container';
 
 const tiers = [
   {
-    title: 'Free',
-    price: '0',
+    title: 'Basic',
+    price: '5 000',
     description: [
       '10 users included',
       '2 GB of storage',
@@ -31,7 +33,7 @@ const tiers = [
   {
     title: 'Pro',
     subheader: 'Most popular',
-    price: '15',
+    price: '6 500',
     description: [
       '20 users included',
       '10 GB of storage',
@@ -43,7 +45,7 @@ const tiers = [
   },
   {
     title: 'Enterprise',
-    price: '30',
+    price: '8 000',
     description: [
       '50 users included',
       '30 GB of storage',
@@ -162,7 +164,7 @@ function PricingContent() {
                       variant="h3"
                       color="text.primary"
                     >
-                      ${tier.price}
+                      R{tier.price}
                     </Typography>
                     <Typography variant="h6" color="text.secondary">
                       /mo
